@@ -1,0 +1,1642 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Adobe Summit 2026 — What It Means for You</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --red: #FA0F00;
+  --red-dark: #c40d00;
+  --black: #0a0a0a;
+  --white: #ffffff;
+  --off-white: #f5f3ef;
+  --gray-1: #1a1a1a;
+  --gray-2: #2d2d2d;
+  --gray-3: #444;
+  --gray-4: #888;
+  --gray-5: #ccc;
+  --gold: #f5a623;
+  --teal: #00b4a0;
+  --blue: #0066cc;
+  --purple: #6d4aff;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--black);
+  color: var(--white);
+  overflow-x: hidden;
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+/* ===== HERO ===== */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  position: relative;
+  padding: 60px 24px 80px;
+  background: var(--black);
+  overflow: hidden;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 80% 60% at 50% 0%, rgba(250,15,0,0.18) 0%, transparent 65%),
+    radial-gradient(ellipse 40% 40% at 10% 80%, rgba(250,15,0,0.07) 0%, transparent 60%),
+    radial-gradient(ellipse 40% 40% at 90% 20%, rgba(109,74,255,0.06) 0%, transparent 60%);
+  pointer-events: none;
+}
+
+.hero-eyebrow {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--red);
+  margin-bottom: 20px;
+  opacity: 0;
+  animation: fadeUp 0.6s 0.1s forwards;
+}
+
+.hero h1 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(60px, 12vw, 140px);
+  line-height: 0.9;
+  letter-spacing: 0.02em;
+  margin-bottom: 24px;
+  opacity: 0;
+  animation: fadeUp 0.7s 0.2s forwards;
+}
+
+.hero h1 .line-red { color: var(--red); display: block; }
+.hero h1 .line-white { color: var(--white); display: block; }
+
+.hero-sub {
+  font-size: 17px;
+  font-weight: 300;
+  color: #aaa;
+  max-width: 520px;
+  margin-bottom: 48px;
+  opacity: 0;
+  animation: fadeUp 0.7s 0.3s forwards;
+}
+
+/* ===== CUSTOMER SELECTOR ===== */
+.selector-wrap {
+  opacity: 0;
+  animation: fadeUp 0.7s 0.4s forwards;
+  width: 100%;
+  max-width: 480px;
+}
+
+.selector-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gray-4);
+  margin-bottom: 10px;
+  text-align: left;
+}
+
+.selector-box {
+  position: relative;
+}
+
+#customerSelect {
+  width: 100%;
+  appearance: none;
+  background: var(--gray-1);
+  border: 1.5px solid var(--gray-2);
+  color: var(--white);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  padding: 16px 52px 16px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: border-color 0.2s;
+  outline: none;
+}
+
+#customerSelect:hover, #customerSelect:focus { border-color: var(--red); }
+
+.selector-arrow {
+  position: absolute;
+  right: 18px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--gray-4);
+  pointer-events: none;
+  font-size: 18px;
+}
+
+.selector-cta {
+  margin-top: 12px;
+  font-size: 12px;
+  color: var(--gray-4);
+  text-align: center;
+}
+
+/* ===== WELCOME BANNER ===== */
+#welcomeBanner {
+  display: none;
+  background: linear-gradient(135deg, var(--red) 0%, var(--red-dark) 100%);
+  padding: 16px 24px;
+  border-radius: 10px;
+  margin-top: 20px;
+  font-size: 14px;
+  font-weight: 500;
+  text-align: center;
+  max-width: 480px;
+  width: 100%;
+}
+
+#welcomeBanner.visible { display: block; animation: fadeUp 0.4s forwards; }
+
+.hero-scroll {
+  position: absolute;
+  bottom: 32px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  color: var(--gray-4);
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  animation: bounce 2s 2s infinite;
+}
+
+.scroll-line {
+  width: 1px;
+  height: 40px;
+  background: linear-gradient(to bottom, var(--red), transparent);
+}
+
+/* ===== NAV ===== */
+.sticky-nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(10,10,10,0.92);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--gray-2);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 32px;
+  height: 56px;
+}
+
+.nav-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--white);
+}
+
+.nav-links {
+  display: flex;
+  gap: 4px;
+  list-style: none;
+}
+
+.nav-links a {
+  display: block;
+  padding: 6px 12px;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--gray-4);
+  text-decoration: none;
+  border-radius: 6px;
+  transition: color 0.2s, background 0.2s;
+  white-space: nowrap;
+}
+
+.nav-links a:hover { color: var(--white); background: var(--gray-2); }
+
+/* ===== SECTIONS ===== */
+.section {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 80px 32px;
+}
+
+.section-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--red);
+  margin-bottom: 12px;
+}
+
+.section-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(36px, 5vw, 64px);
+  line-height: 1;
+  margin-bottom: 16px;
+  letter-spacing: 0.02em;
+}
+
+.section-desc {
+  font-size: 16px;
+  font-weight: 300;
+  color: #aaa;
+  max-width: 640px;
+  margin-bottom: 48px;
+  line-height: 1.7;
+}
+
+/* ===== DIVIDER ===== */
+.divider {
+  border: none;
+  height: 1px;
+  background: linear-gradient(to right, transparent, var(--gray-2) 20%, var(--gray-2) 80%, transparent);
+  margin: 0 32px;
+}
+
+/* ===== ROADMAP PILLARS ===== */
+.pillars-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 2px;
+  background: var(--gray-2);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.pillar {
+  background: var(--gray-1);
+  padding: 32px 28px;
+  transition: background 0.2s;
+  cursor: default;
+}
+
+.pillar:hover { background: #222; }
+
+.pillar-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  margin-bottom: 20px;
+}
+
+.pillar-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 22px;
+  letter-spacing: 0.03em;
+  margin-bottom: 10px;
+}
+
+.pillar-desc {
+  font-size: 13px;
+  font-weight: 300;
+  color: #999;
+  line-height: 1.7;
+  margin-bottom: 20px;
+}
+
+.pillar-bullets {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.pillar-bullets li {
+  font-size: 12.5px;
+  color: #bbb;
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  line-height: 1.5;
+}
+
+.pillar-bullets li::before {
+  content: '→';
+  color: var(--red);
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+.pillar.aem .pillar-icon { background: rgba(250,15,0,0.12); }
+.pillar.m2c .pillar-icon { background: rgba(0,180,160,0.12); }
+.pillar.wf .pillar-icon { background: rgba(109,74,255,0.12); }
+.pillar.optimizer .pillar-icon { background: rgba(245,166,35,0.12); }
+.pillar.agents .pillar-icon { background: rgba(0,102,204,0.12); }
+
+/* ===== CUSTOMER SPOTLIGHT ===== */
+.spotlight-card {
+  display: none;
+  background: linear-gradient(135deg, rgba(250,15,0,0.08) 0%, rgba(250,15,0,0.03) 100%);
+  border: 1px solid rgba(250,15,0,0.25);
+  border-radius: 12px;
+  padding: 32px;
+  margin-bottom: 48px;
+  animation: fadeUp 0.4s forwards;
+}
+
+.spotlight-card.visible { display: block; }
+
+.spotlight-header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 20px;
+}
+
+.spotlight-badge {
+  background: var(--red);
+  color: var(--white);
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  padding: 5px 12px;
+  border-radius: 20px;
+}
+
+.spotlight-name {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 26px;
+  letter-spacing: 0.03em;
+}
+
+.spotlight-priorities {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+.priority-tag {
+  background: var(--gray-2);
+  border: 1px solid var(--gray-3);
+  color: var(--gray-5);
+  font-size: 11px;
+  font-weight: 500;
+  padding: 5px 12px;
+  border-radius: 20px;
+}
+
+.spotlight-body {
+  font-size: 14px;
+  font-weight: 300;
+  color: #bbb;
+  line-height: 1.7;
+}
+
+.spotlight-body strong { color: var(--white); font-weight: 600; }
+
+/* ===== VIDEO GRID ===== */
+.video-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 16px;
+}
+
+.video-card {
+  background: var(--gray-1);
+  border: 1px solid var(--gray-2);
+  border-radius: 12px;
+  overflow: hidden;
+  transition: border-color 0.2s, transform 0.2s;
+}
+
+.video-card:hover { border-color: var(--red); transform: translateY(-2px); }
+
+.video-thumb {
+  aspect-ratio: 16/9;
+  background: var(--gray-2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.video-thumb-bg {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 48px;
+  opacity: 0.08;
+}
+
+.play-btn {
+  width: 52px;
+  height: 52px;
+  background: var(--red);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  color: var(--white);
+  font-size: 18px;
+  transition: transform 0.2s, background 0.2s;
+  z-index: 1;
+  padding-left: 4px;
+}
+
+.play-btn:hover { transform: scale(1.1); background: var(--red-dark); }
+
+.video-info {
+  padding: 20px;
+}
+
+.video-tag {
+  font-family: 'DM Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--red);
+  margin-bottom: 8px;
+}
+
+.video-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--white);
+  margin-bottom: 8px;
+  line-height: 1.4;
+}
+
+.video-desc {
+  font-size: 12px;
+  font-weight: 300;
+  color: #888;
+  line-height: 1.6;
+  margin-bottom: 14px;
+}
+
+.video-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--red);
+  text-decoration: none;
+  transition: gap 0.2s;
+}
+
+.video-link:hover { gap: 10px; }
+
+/* ===== SESSION LIST ===== */
+.sessions-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.session-row {
+  background: var(--gray-1);
+  border: 1px solid var(--gray-2);
+  border-radius: 10px;
+  padding: 20px 24px;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 20px;
+  align-items: center;
+  transition: border-color 0.2s;
+}
+
+.session-row:hover { border-color: var(--gray-3); }
+
+.session-id-badge {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  background: var(--gray-2);
+  color: var(--gray-4);
+  padding: 4px 10px;
+  border-radius: 6px;
+  white-space: nowrap;
+}
+
+.session-info {}
+
+.session-name {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--white);
+  margin-bottom: 4px;
+  line-height: 1.4;
+}
+
+.session-meta {
+  font-size: 11px;
+  color: var(--gray-4);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.session-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--gray-2);
+  color: var(--white);
+  font-size: 12px;
+  font-weight: 600;
+  padding: 8px 16px;
+  border-radius: 8px;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: background 0.2s;
+}
+
+.session-link:hover { background: var(--red); }
+
+/* ===== PERSONALIZED CALLOUTS ===== */
+.customer-callout {
+  display: none;
+  background: rgba(250,15,0,0.06);
+  border-left: 3px solid var(--red);
+  padding: 14px 18px;
+  border-radius: 0 8px 8px 0;
+  margin-top: 10px;
+  font-size: 13px;
+  font-weight: 300;
+  color: #ccc;
+  line-height: 1.6;
+}
+
+.customer-callout strong { color: var(--white); font-weight: 600; }
+.customer-callout.visible { display: block; }
+
+/* ===== PILL TAGS ===== */
+.tag-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 6px;
+}
+
+.tag {
+  font-size: 10px;
+  font-weight: 500;
+  padding: 3px 9px;
+  border-radius: 12px;
+  letter-spacing: 0.05em;
+}
+
+.tag-aem { background: rgba(250,15,0,0.15); color: #ff8077; }
+.tag-wf { background: rgba(109,74,255,0.15); color: #b09fff; }
+.tag-optimizer { background: rgba(245,166,35,0.15); color: #f5c87a; }
+.tag-agents { background: rgba(0,102,204,0.15); color: #66aaff; }
+.tag-eds { background: rgba(0,180,160,0.15); color: #4dd4c8; }
+.tag-virtual { background: rgba(255,255,255,0.07); color: #aaa; }
+
+/* ===== ROADMAP DETAIL CARDS ===== */
+.roadmap-section {
+  margin-bottom: 64px;
+}
+
+.roadmap-section-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 28px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--gray-2);
+}
+
+.roadmap-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  flex-shrink: 0;
+}
+
+.roadmap-section-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 32px;
+  letter-spacing: 0.03em;
+  line-height: 1;
+}
+
+.roadmap-section-sub {
+  font-size: 13px;
+  color: var(--gray-4);
+  margin-top: 3px;
+}
+
+.roadmap-items {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 14px;
+}
+
+.roadmap-item {
+  background: var(--gray-1);
+  border: 1px solid var(--gray-2);
+  border-radius: 10px;
+  padding: 22px;
+}
+
+.roadmap-item-title {
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: var(--white);
+}
+
+.roadmap-item-body {
+  font-size: 12.5px;
+  font-weight: 300;
+  color: #999;
+  line-height: 1.65;
+}
+
+.ga-badge {
+  display: inline-block;
+  font-family: 'DM Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  padding: 3px 8px;
+  border-radius: 4px;
+  margin-bottom: 10px;
+}
+
+.ga-now { background: rgba(0,180,100,0.15); color: #66cc99; }
+.ga-soon { background: rgba(245,166,35,0.15); color: #f5c87a; }
+.ga-preview { background: rgba(109,74,255,0.15); color: #b09fff; }
+
+/* ===== FOOTER ===== */
+footer {
+  background: var(--gray-1);
+  border-top: 1px solid var(--gray-2);
+  padding: 40px 32px;
+  text-align: center;
+}
+
+.footer-logo {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 28px;
+  letter-spacing: 0.05em;
+  margin-bottom: 8px;
+}
+
+.footer-logo span { color: var(--red); }
+
+.footer-sub {
+  font-size: 12px;
+  color: var(--gray-4);
+  margin-bottom: 20px;
+}
+
+.footer-links {
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+.footer-links a {
+  font-size: 12px;
+  color: var(--gray-4);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.footer-links a:hover { color: var(--red); }
+
+/* ===== ANIMATIONS ===== */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateX(-50%) translateY(0); }
+  50% { transform: translateX(-50%) translateY(-8px); }
+}
+
+/* ===== UTILITY ===== */
+.text-red { color: var(--red); }
+
+.cta-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--red);
+  color: var(--white);
+  font-size: 13px;
+  font-weight: 600;
+  padding: 12px 24px;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: background 0.2s, transform 0.15s;
+}
+
+.cta-btn:hover { background: var(--red-dark); transform: translateY(-1px); }
+
+.ghost-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: transparent;
+  color: var(--white);
+  font-size: 13px;
+  font-weight: 500;
+  padding: 12px 24px;
+  border-radius: 8px;
+  text-decoration: none;
+  border: 1px solid var(--gray-3);
+  transition: border-color 0.2s;
+}
+
+.ghost-btn:hover { border-color: var(--white); }
+
+.flex-row { display: flex; gap: 12px; flex-wrap: wrap; }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero" id="top">
+  <div class="hero-eyebrow">Adobe Summit 2026 · Las Vegas · April 20–22</div>
+  <h1>
+    <span class="line-red">SUMMIT</span>
+    <span class="line-white">RECAP</span>
+  </h1>
+  <p class="hero-sub">The biggest Adobe announcements of the year — and what they mean for your platform strategy.</p>
+
+  <div class="selector-wrap">
+    <div class="selector-label">Select your primary initiative to personalize this page</div>
+    <div class="selector-box">
+      <select id="customerSelect" onchange="setCustomer(this.value)">
+        <option value="">— Select your primary initiative —</option>
+        <option value="migration">AEM Cloud Migration &amp; EDS Modernization</option>
+        <option value="optimizer">AI Optimization — LLM Optimizer &amp; Sites Optimizer</option>
+        <option value="workfront">Workfront AI, Planning &amp; Workflow Automation</option>
+        <option value="assets">Assets, Content Supply Chain &amp; Agency Governance</option>
+        <option value="agents">Agent Orchestrator &amp; Enterprise AI Architecture</option>
+      </select>
+      <div class="selector-arrow">▾</div>
+    </div>
+    <p class="selector-cta">Relevant Summit content will be highlighted based on your initiative.</p>
+  </div>
+
+  <div id="welcomeBanner"></div>
+
+  <div class="hero-scroll">
+    <div class="scroll-line"></div>
+    SCROLL
+  </div>
+</section>
+
+<!-- STICKY NAV -->
+<nav class="sticky-nav">
+  <div class="nav-brand">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 234" width="28" height="28" aria-label="Adobe">
+      <path d="M139.5 0h100.1v234L139.5 0z" fill="#FA0F00"/>
+      <path d="M100.4 0H.3v234L100.4 0z" fill="#FA0F00"/>
+      <path d="M120 84.1l48.6 117.1H131l-14.6-35.5H76.5L120 84.1z" fill="#FA0F00"/>
+    </svg>
+    Summit 2026
+  </div>
+  <ul class="nav-links">
+    <li><a href="#roadmap">Roadmap</a></li>
+    <li><a href="#videos">Videos</a></li>
+    <li><a href="#sessions">Sessions</a></li>
+    <li><a href="#next">Next Steps</a></li>
+  </ul>
+</nav>
+
+<!-- OVERVIEW / CUSTOMER SPOTLIGHT -->
+<section id="overview" style="background: var(--gray-1); padding: 60px 0;">
+  <div class="section" style="padding-top: 0; padding-bottom: 0;">
+    <div class="section-label">Why This Year Mattered</div>
+    <h2 class="section-title">The Agentic Era <span class="text-red">Arrives.</span></h2>
+    <p class="section-desc">Adobe Summit 2026 was defined by one theme: AI agents that don't just assist — they act. Across AEM, Workfront, and the full Experience Cloud, Adobe announced a coordinated platform that lets brands build, optimize, and orchestrate content and experiences autonomously at scale.</p>
+
+    <!-- Initiative spotlight cards — shown on selection -->
+    <div id="spotlight-migration" class="spotlight-card">
+      <div class="spotlight-header">
+        <span class="spotlight-badge">Your Initiative</span>
+        <span class="spotlight-name">AEM Cloud Migration &amp; EDS Modernization</span>
+      </div>
+      <div class="spotlight-priorities">
+        <span class="priority-tag">🏗 AEM on-prem / AMS → Cloud Service</span>
+        <span class="priority-tag">⚡ EDS hybrid delivery — incremental migration</span>
+        <span class="priority-tag">☁️ Zero-maintenance, auto-scaling infrastructure</span>
+        <span class="priority-tag">🔒 AI capabilities gated to AEM CS</span>
+        <span class="priority-tag">💸 IT cost optimization &amp; TCO reduction</span>
+      </div>
+      <div class="spotlight-body">
+        <strong>What Summit confirmed:</strong> The EDS hybrid delivery model is now fully baked — you can migrate incrementally, not all at once, with AEM Sites and EDS pages co-existing on the same domain and CDN. Critically, every AI capability Adobe announced — Sites Optimizer, LLM Optimizer, Agent Orchestrator — is <strong>AEM Cloud Service only</strong>. The platform you're moving to is exactly where all of Adobe's AI investment is landing. Cedric Huesler's S321 and the customer migration stories in S328 are your two must-watches.
+      </div>
+    </div>
+
+    <div id="spotlight-optimizer" class="spotlight-card">
+      <div class="spotlight-header">
+        <span class="spotlight-badge">Your Initiative</span>
+        <span class="spotlight-name">AI Optimization — LLM Optimizer &amp; Sites Optimizer</span>
+      </div>
+      <div class="spotlight-priorities">
+        <span class="priority-tag">🧠 LLM Optimizer — AI assistant visibility</span>
+        <span class="priority-tag">🔍 Sites Optimizer — continuous SEO &amp; CWV fixes</span>
+        <span class="priority-tag">⚡ Auto-Identify → Auto-Suggest → Auto-Optimize</span>
+        <span class="priority-tag">🏥 Healthcare AI accuracy &amp; brand safety</span>
+        <span class="priority-tag">📈 One-click deployment — no dev sprint required</span>
+      </div>
+      <div class="spotlight-body">
+        <strong>What Summit confirmed:</strong> Both products are now GA on AEM Cloud Service. LLM Optimizer ensures your content is accurately represented by AI assistants like ChatGPT, Perplexity, and Google AI Overviews — structuring content, flagging inaccurate AI responses, and deploying fixes directly back to AEM. For healthcare organizations, this is a patient safety and trust imperative, not just an SEO play. Sites Optimizer handles the rest: continuous performance, accessibility, and conversion improvements with no manual engineering cycles. S325 is the session to watch.
+      </div>
+    </div>
+
+    <div id="spotlight-workfront" class="spotlight-card">
+      <div class="spotlight-header">
+        <span class="spotlight-badge">Your Initiative</span>
+        <span class="spotlight-name">Workfront AI, Planning &amp; Workflow Automation</span>
+      </div>
+      <div class="spotlight-priorities">
+        <span class="priority-tag">📋 Workfront Planning — campaign orchestration</span>
+        <span class="priority-tag">🤖 Intelligent approvals &amp; AI routing</span>
+        <span class="priority-tag">⚙️ Workflow Optimization Agent</span>
+        <span class="priority-tag">✍️ Agentic brief &amp; task generation</span>
+        <span class="priority-tag">🔗 Native AEM integration — unified metadata</span>
+      </div>
+      <div class="spotlight-body">
+        <strong>What Summit confirmed:</strong> S801 — "AI and the Future of Adobe Workfront" — was the flagship session for this initiative, presented by Workfront product leadership Julie Johnson, Jacob Russell, and Paul Vaughn. AI-powered approval routing, the new Workfront Planning module for campaign orchestration, and the upcoming Workflow Optimization Agent were all previewed. The agent continuously analyzes your Workfront workflows, identifies bottlenecks, and recommends improvements automatically — moving operations teams from reactive management to proactive optimization.
+      </div>
+    </div>
+
+    <div id="spotlight-assets" class="spotlight-card">
+      <div class="spotlight-header">
+        <span class="spotlight-badge">Your Initiative</span>
+        <span class="spotlight-name">Assets, Content Supply Chain &amp; Agency Governance</span>
+      </div>
+      <div class="spotlight-priorities">
+        <span class="priority-tag">🗂 AEM Assets Ultimate as system of record</span>
+        <span class="priority-tag">🏢 Content Hub — governed agency self-service</span>
+        <span class="priority-tag">🎨 Adobe Express embedded in approval workflows</span>
+        <span class="priority-tag">🔗 Workfront + AEM unified metadata &amp; handoffs</span>
+        <span class="priority-tag">🤖 AI-readiness without re-platforming</span>
+      </div>
+      <div class="spotlight-body">
+        <strong>What Summit confirmed:</strong> The Assets + Workfront content supply chain story is the strongest it's ever been. Adobe Express is now embedded directly in Content Hub with Workfront approval flows wrapped around it — meaning agencies and distributed teams can access, remix, and publish brand-safe assets without Creative Cloud licenses or manual governance overhead. The Workflow Optimization Agent and native AEM metadata integration make Workfront the AI-native command center for the entire content operation. No re-platforming required to unlock this.
+      </div>
+    </div>
+
+    <div id="spotlight-agents" class="spotlight-card">
+      <div class="spotlight-header">
+        <span class="spotlight-badge">Your Initiative</span>
+        <span class="spotlight-name">Agent Orchestrator &amp; Enterprise AI Architecture</span>
+      </div>
+      <div class="spotlight-priorities">
+        <span class="priority-tag">🤖 Multi-agent coordination across Experience Cloud</span>
+        <span class="priority-tag">🧠 Shared reasoning engine — purpose-built agents</span>
+        <span class="priority-tag">⚡ Content Production, Journey &amp; Data Insights Agents</span>
+        <span class="priority-tag">🏛 Customer Experience Models — enterprise fine-tuning</span>
+        <span class="priority-tag">🔗 AEM + Workfront + RTCDP + AJO in one AI layer</span>
+      </div>
+      <div class="spotlight-body">
+        <strong>What Summit confirmed:</strong> Adobe's Agent Orchestrator is the unified AI infrastructure layer that connects purpose-built agents across the entire Experience Cloud through a shared reasoning engine. This isn't a collection of isolated AI features — it's a coordinated architecture where the Content Production Agent, Site Optimization Agent, Workflow Optimization Agent, and Journey Agent collaborate on complex, multi-step tasks. S602 — Agent Orchestrator Unpacked — is the must-watch session: it explains how all of Adobe's AI pieces connect at enterprise scale without requiring custom integrations.
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- ROADMAP OVERVIEW PILLARS -->
+<section id="roadmap" class="section">
+  <div class="section-label">The 2026 Roadmap</div>
+  <h2 class="section-title">Five Areas <span class="text-red">That Changed.</span></h2>
+  <p class="section-desc">Adobe made substantive product announcements across five platform areas. Here's the 30-second version of each — with full detail below.</p>
+
+  <div class="pillars-grid">
+    <div class="pillar aem">
+      <div class="pillar-icon">🏗</div>
+      <div class="pillar-title">AEM + Move to Cloud</div>
+      <div class="pillar-desc">AEM Cloud Service is now the only path to Adobe's full AI stack. EDS hybrid delivery removes the all-or-nothing migration barrier.</div>
+      <ul class="pillar-bullets">
+        <li>EDS + AEM Sites hybrid on same domain, same CDN</li>
+        <li>Universal Editor now handles headless + document authoring</li>
+        <li>Cloud-native auto-scaling, 99.9% SLA, zero-maintenance</li>
+        <li>AI capabilities gated to AEM CS — not available on-prem</li>
+      </ul>
+    </div>
+    <div class="pillar wf">
+      <div class="pillar-icon">📋</div>
+      <div class="pillar-title">Workfront Optimization</div>
+      <div class="pillar-desc">Workfront becomes the AI-native command center for content operations. Planning, approvals, and cross-system orchestration all get intelligent upgrades.</div>
+      <ul class="pillar-bullets">
+        <li>AI-powered intelligent approvals and routing</li>
+        <li>Workfront Planning — resource + campaign orchestration</li>
+        <li>Native AEM integration — unified metadata + workflows</li>
+        <li>Workflow Optimization Agent — auto-surfaces bottlenecks</li>
+      </ul>
+    </div>
+    <div class="pillar optimizer">
+      <div class="pillar-icon">🔍</div>
+      <div class="pillar-title">LLM Optimizer + Sites Optimizer</div>
+      <div class="pillar-desc">Two AI-powered optimization products now GA. One ensures your content is visible to AI assistants. The other continuously improves your site without manual effort.</div>
+      <ul class="pillar-bullets">
+        <li>LLM Optimizer: structured content for AI model visibility</li>
+        <li>Sites Optimizer: continuous SEO, CWV, accessibility fixes</li>
+        <li>Auto-Identify → Auto-Suggest → Auto-Optimize workflow</li>
+        <li>Both integrate directly into AEM Sites CS authoring UI</li>
+      </ul>
+    </div>
+    <div class="pillar agents">
+      <div class="pillar-icon">🤖</div>
+      <div class="pillar-title">Agent Orchestrator</div>
+      <div class="pillar-desc">Adobe's multi-agent AI architecture connects purpose-built agents across the full Experience Cloud through a unified reasoning engine.</div>
+      <ul class="pillar-bullets">
+        <li>Purpose-built agents across AEM, Workfront, RTCDP, AJO</li>
+        <li>Agents collaborate: Content Production → Journey → Data Insights</li>
+        <li>Customer Experience Models — trained on Adobe ecosystem data</li>
+        <li>1M credit model — composable, scalable, multi-cloud</li>
+      </ul>
+    </div>
+    <div class="pillar m2c">
+      <div class="pillar-icon">☁️</div>
+      <div class="pillar-title">EDS &amp; Edge Delivery</div>
+      <div class="pillar-desc">Edge Delivery Services matures into the performance and developer experience layer for AEM CS, with AI-assisted authoring and coding tools built in.</div>
+      <ul class="pillar-bullets">
+        <li>Vibe Coding — AI agent-assisted EDS block development</li>
+        <li>100/100 Lighthouse scores built into the architecture</li>
+        <li>Document + WYSIWYG authoring converge in Universal Editor</li>
+        <li>MCP integration for AI coding agents (Claude, Copilot, etc.)</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- DETAILED ROADMAP -->
+<section style="background: var(--gray-1); padding: 80px 0;" id="roadmap-detail">
+  <div class="section" style="padding-top: 0; padding-bottom: 0;">
+    <div class="section-label">Deep Dive</div>
+    <h2 class="section-title">Roadmap <span class="text-red">Details.</span></h2>
+    <p class="section-desc">What was announced, what's GA now, what's coming soon — broken down by product area.</p>
+
+    <!-- AEM + M2C -->
+    <div class="roadmap-section">
+      <div class="roadmap-section-header">
+        <div class="roadmap-icon" style="background: rgba(250,15,0,0.12);">🏗</div>
+        <div>
+          <div class="roadmap-section-title">AEM Sites CS &amp; Move to Cloud / EDS</div>
+          <div class="roadmap-section-sub">Sessions: S321, S328, L613</div>
+        </div>
+      </div>
+      <div class="roadmap-items">
+        <div class="roadmap-item">
+          <div class="ga-badge ga-now">GA Now</div>
+          <div class="roadmap-item-title">EDS Hybrid Delivery</div>
+          <div class="roadmap-item-body">AEM Sites and Edge Delivery Services pages now co-exist on the same domain with the same CDN. Teams can migrate incrementally — not all at once — routing some paths to EDS while others stay on AEM Sites. This removes the biggest architectural barrier to EDS adoption.</div>
+        </div>
+        <div class="roadmap-item">
+          <div class="ga-badge ga-now">GA Now</div>
+          <div class="roadmap-item-title">Universal Editor — Converged Authoring</div>
+          <div class="roadmap-item-body">Universal Editor now handles document-based authoring (Word/SharePoint), WYSIWYG page editing, and headless content editing in a single interface. Authors no longer need to context-switch between tools based on content type.</div>
+        </div>
+        <div class="roadmap-item">
+          <div class="ga-badge ga-soon">Coming 2026</div>
+          <div class="roadmap-item-title">Agentic Authoring Layer</div>
+          <div class="roadmap-item-body">AI agents embedded in the authoring workflow — generating content variations, suggesting personalization, and automatically tagging assets based on content context. The authoring interface becomes an AI-assisted workspace, not just an editing tool.</div>
+        </div>
+        <div class="roadmap-item">
+          <div class="ga-badge ga-now">GA Now</div>
+          <div class="roadmap-item-title">Vibe Coding — AI EDS Development</div>
+          <div class="roadmap-item-body">AI coding agents (via MCP integration) can now build, style, and customize EDS blocks dramatically faster. The L613 hands-on lab at Summit demonstrated AI-assisted EDS development — what used to take days takes hours. Lowers the engineering barrier to EDS adoption significantly.</div>
+        </div>
+        <div class="roadmap-item">
+          <div class="ga-badge ga-now">GA Now</div>
+          <div class="roadmap-item-title">Cloud-Native Performance Architecture</div>
+          <div class="roadmap-item-body">AEM CS with EDS achieves 100/100 Lighthouse scores by architecture, not by optimization effort. Fastly CDN, auto-scaling infrastructure, 99.9% SLA, and zero-maintenance upgrades are platform defaults — not add-ons. Zero engineering cycles required to maintain performance at scale.</div>
+        </div>
+        <div class="roadmap-item">
+          <div class="ga-badge ga-preview">Preview</div>
+          <div class="roadmap-item-title">Content Fragments + EDS Composability</div>
+          <div class="roadmap-item-body">Structured content fragments from AEM Assets can now be delivered via EDS, combining the governance and editorial workflow of AEM with the performance delivery of Edge Delivery. Headless and edge delivery converge in a single model.</div>
+        </div>
+      </div>
+
+      <div id="callout-aem-medtronic" class="customer-callout">
+        <strong>Relevant to your initiative:</strong> The hybrid delivery model directly answers the "we can't afford a big bang migration" concern. Start migrating new pages and campaigns to EDS while your existing AEM Sites content stays exactly where it is. Your engineering team can evaluate EDS on real workloads without disrupting production.
+      </div>
+      <div id="callout-aem-gsk" class="customer-callout">
+        <strong>Relevant to your initiative:</strong> Session S321 with Cedric Huesler maps exactly to an on-prem migration decision. He addresses hybrid delivery, what the agentic layer looks like on top of EDS, and how teams at this stage should think about the transition. Watch this with your platform architects before your next internal strategy session.
+      </div>
+      <div id="callout-aem-astellas" class="customer-callout">
+        <strong>Relevant to your initiative:</strong> Summit made the M2C value story airtight. Every AI capability — Sites Optimizer, LLM Optimizer, Agent Orchestrator — requires AEM Cloud Service. The platform you're already moving to is where all of Adobe's AI investment is landing.
+      </div>
+      <div id="callout-aem-resmed" class="customer-callout">
+        <strong>Relevant to your initiative:</strong> The AEM Sites CS + EDS configuration is exactly the architecture Cedric described as the forward standard. The EDS performance layer combined with Extended Security for Healthcare is the right combination for a large global market footprint.
+      </div>
+      <div id="callout-aem-minimed" class="customer-callout">
+        <strong>Relevant to your initiative:</strong> EDS performance improvements directly impact device-page experiences for patients and HCPs. Note the HIPAA split-programme requirement — EDS itself isn't HIPAA-ready at launch, but your Adobe team has a compliant architecture path ready.
+      </div>
+    </div>
+
+    <!-- WORKFRONT -->
+    <div class="roadmap-section">
+      <div class="roadmap-section-header">
+        <div class="roadmap-icon" style="background: rgba(109,74,255,0.12);">📋</div>
+        <div>
+          <div class="roadmap-section-title">Workfront Optimization &amp; AI</div>
+          <div class="roadmap-section-sub">Sessions: S801, S803, S909</div>
+        </div>
+      </div>
+      <div class="roadmap-items">
+        <div class="roadmap-item">
+          <div class="ga-badge ga-now">GA Now</div>
+          <div class="roadmap-item-title">Intelligent Approvals &amp; AI Routing</div>
+          <div class="roadmap-item-body">AI-powered approval routing learns from historical patterns to predict bottlenecks and route requests to the right reviewers automatically. Reduces average approval cycle time and eliminates the manual triage overhead that slows content supply chains.</div>
+        </div>
+        <div class="roadmap-item">
+          <div class="ga-badge ga-now">GA Now</div>
+          <div class="roadmap-item-title">Workfront Planning — Campaign Orchestration</div>
+          <div class="roadmap-item-body">A strategic planning layer above Workfront's task management. Teams can plan campaigns, allocate resources, and map delivery timelines with a high-level view — then Workfront execution tracks the work underneath. Designed for enterprise marketing operations with multiple concurrent campaigns.</div>
+        </div>
+        <div class="roadmap-item">
+          <div class="ga-badge ga-now">GA Now</div>
+          <div class="roadmap-item-title">Native AEM Integration — Unified Metadata</div>
+          <div class="roadmap-item-body">Workfront and AEM now share a common metadata schema and workflow handoff model. Assets created in Workfront-governed production flows inherit AEM metadata automatically on publish. Eliminates the manual metadata re-entry that has caused downstream governance issues.</div>
+        </div>
+        <div class="roadmap-item">
+          <div class="ga-badge ga-soon">Coming 2026</div>
+          <div class="roadmap-item-title">Workflow Optimization Agent</div>
+          <div class="roadmap-item-body">An AI agent that continuously analyzes your Workfront workflows, identifies bottlenecks, and recommends process improvements. Over time it learns your team's patterns and proactively surfaces optimization opportunities — without requiring a process analyst to audit workflows manually.</div>
+        </div>
+        <div class="roadmap-item">
+          <div class="ga-badge ga-soon">Coming 2026</div>
+          <div class="roadmap-item-title">Agentic Task Creation &amp; Brief Generation</div>
+          <div class="roadmap-item-body">AI agents can generate creative briefs, populate project templates, and assign tasks based on natural language inputs. A campaign manager describes a need in a few sentences; Workfront builds the project structure, assigns the right team members, and sets realistic timelines automatically.</div>
+        </div>
+        <div class="roadmap-item">
+          <div class="ga-badge ga-now">GA Now</div>
+          <div class="roadmap-item-title">Adobe Express Embedded in Workflow</div>
+          <div class="roadmap-item-body">Adobe Express is now embedded directly in AEM Assets Content Hub, with Workfront approval flows wrapped around it. Teams can remix and adapt approved assets from within Workfront-driven workflows — brand-safe, no Creative Cloud license required. Dramatically reduces the bottleneck of getting simple creative adaptations done at scale.</div>
+        </div>
+      </div>
+
+      <div id="callout-wf-arthrex" class="customer-callout">
+        <strong>Relevant to your initiative:</strong> S801 is the must-watch session from Summit for this initiative. Every item above was addressed by Workfront product leadership. The Workflow Optimization Agent is the one to track specifically — it's designed for teams with deep Workfront maturity who want to move from reactive management to proactive optimization.
+      </div>
+      <div id="callout-wf-jj" class="customer-callout">
+        <strong>Relevant to your initiative:</strong> The Workflow Optimization Agent + Native AEM Integration combination directly addresses large agency ecosystem governance challenges. Assets flow from Workfront into AEM with metadata intact, and the agent surfaces the approvals that are creating cycle-time problems — the operational layer a Content Supply Chain strategy needs.
+      </div>
+      <div id="callout-wf-medtronic" class="customer-callout">
+        <strong>Relevant to your initiative:</strong> Native AEM Integration means your existing Workfront investment gets dramatically more powerful on AEM CS. Watch S909 ("Making Workfront and AEM Speak the Same Language") — it shows exactly how the metadata alignment and workflow handoff works in practice.
+      </div>
+      <div id="callout-wf-biogen" class="customer-callout">
+        <strong>Relevant to your initiative:</strong> S909 is the right starting point — it's the integration foundation session that maps Workfront + AEM to omnichannel content production workflows. The Content Production Agent is the near-term AI story worth getting ahead of.
+      </div>
+    </div>
+
+    <!-- OPTIMIZERS -->
+    <div class="roadmap-section">
+      <div class="roadmap-section-header">
+        <div class="roadmap-icon" style="background: rgba(245,166,35,0.12);">🔍</div>
+        <div>
+          <div class="roadmap-section-title">LLM Optimizer &amp; AEM Sites Optimizer</div>
+          <div class="roadmap-section-sub">Session: S325 | Now GA on AEM CS</div>
+        </div>
+      </div>
+      <div class="roadmap-items">
+        <div class="roadmap-item">
+          <div class="ga-badge ga-now">GA Now</div>
+          <div class="roadmap-item-title">LLM Optimizer — AI Visibility</div>
+          <div class="roadmap-item-body">Ensures your content is accurately represented and cited by AI assistants (ChatGPT, Perplexity, Claude, Google AI Overviews). It structures your AEM content with semantic markup, identifies what questions AI models are answering about your brand, flags inaccurate AI-generated responses, and deploys fixes directly back to AEM — all without leaving your CMS workflow.</div>
+        </div>
+        <div class="roadmap-item">
+          <div class="ga-badge ga-now">GA Now</div>
+          <div class="roadmap-item-title">AEM Sites Optimizer — Auto-Identify</div>
+          <div class="roadmap-item-body">Continuously scans your live AEM-powered pages for Core Web Vitals issues, broken links, missing metadata, accessibility violations (WCAG), and SEO gaps. Findings surface in a unified dashboard with business-impact prioritization — not just raw audit data. Available now, AEM Cloud Service only.</div>
+        </div>
+        <div class="roadmap-item">
+          <div class="ga-badge ga-now">GA Now</div>
+          <div class="roadmap-item-title">AEM Sites Optimizer — Auto-Suggest</div>
+          <div class="roadmap-item-body">Leverages models trained on AEM data and your content to propose solutions for the issues identified. Rather than telling you "your LCP score is low," it tells you which specific element to fix, how, and what business impact the fix will have. Marketers can act without waiting for a developer sprint.</div>
+        </div>
+        <div class="roadmap-item">
+          <div class="ga-badge ga-now">GA Now</div>
+          <div class="roadmap-item-title">AEM Sites Optimizer — Auto-Optimize</div>
+          <div class="roadmap-item-body">Deploys approved fixes into AEM with one click. One-click deployment from insight to production, with full audit trail. For LLM Optimizer specifically: instantly deploys content and code updates back to AEM to improve AI model visibility. Full auto-optimize is GA for AEM Sites Cloud Service at launch.</div>
+        </div>
+        <div class="roadmap-item">
+          <div class="ga-badge ga-soon">Coming 2026</div>
+          <div class="roadmap-item-title">LLM Optimizer — Cross-CMS Expansion</div>
+          <div class="roadmap-item-body">LLM Optimizer's auto-optimize capability will expand beyond AEM to support other CMS platforms. Currently AEM Sites CS is the primary integration; cross-CMS support is on the roadmap for later in 2026. Plan your architecture now for the native AEM version.</div>
+        </div>
+        <div class="roadmap-item">
+          <div class="ga-badge ga-now">GA Now</div>
+          <div class="roadmap-item-title">Traffic &amp; Conversion Intelligence</div>
+          <div class="roadmap-item-body">Sites Optimizer connects site performance metrics to business outcomes. Understand which pages are underperforming, where visitors are dropping off, and which content changes are most likely to drive engagement or conversion. Bridges the gap between engineering performance metrics and marketing business goals.</div>
+        </div>
+      </div>
+
+      <div id="callout-opt-gsk" class="customer-callout">
+        <strong>Relevant to your initiative:</strong> The Sites Optimizer + LLM Optimizer combination is the AI optimization layer that makes EDS migration tangibly valuable. There's a compelling demonstration showing a page going from 6% AI-visible to fully visible with LLM Optimizer applied — ask your Adobe team to walk through it.
+      </div>
+      <div id="callout-opt-minimed" class="customer-callout">
+        <strong>Relevant to your initiative:</strong> LLM Optimizer is a patient safety tool for healthcare, not just an SEO play. Patients and HCPs are asking AI assistants about insulin pump therapy, CGM devices, and device support resources. LLM Optimizer gives you visibility into what AI models are saying about you — and the ability to correct it.
+      </div>
+      <div id="callout-opt-resmed" class="customer-callout">
+        <strong>Relevant to your initiative:</strong> Sites Optimizer Ultimate adds the auto-optimize capability on top of the standard tier. For a large global market footprint, the difference between manually fixing each market's site issues and having Sites Optimizer deploy fixes automatically is measured in months of engineering time saved annually.
+      </div>
+      <div id="callout-opt-medtronic" class="customer-callout">
+        <strong>Relevant to your initiative:</strong> Sites Optimizer is exclusively available on AEM CS — it doesn't exist on on-prem setups. This session makes the value case concretely: continuous AI-driven optimization with no manual intervention. A web team would typically spend weeks on the backlog of fixes this tool handles automatically.
+      </div>
+    </div>
+
+    <!-- AGENT ORCHESTRATOR -->
+    <div class="roadmap-section">
+      <div class="roadmap-section-header">
+        <div class="roadmap-icon" style="background: rgba(0,102,204,0.12);">🤖</div>
+        <div>
+          <div class="roadmap-section-title">Agent Orchestrator &amp; Experience Platform Agents</div>
+          <div class="roadmap-section-sub">Session: S602 | The multi-agent AI architecture</div>
+        </div>
+      </div>
+      <div class="roadmap-items">
+        <div class="roadmap-item">
+          <div class="ga-badge ga-now">GA Now</div>
+          <div class="roadmap-item-title">Experience Platform Agent Orchestrator</div>
+          <div class="roadmap-item-body">The unified AI infrastructure layer that enables purpose-built agents across Adobe Experience Cloud to collaborate through a shared reasoning engine. Not a single AI tool — a coordination layer that lets agents across AEM, Workfront, RTCDP, AJO, CJA, and more work together on complex, multi-step tasks.</div>
+        </div>
+        <div class="roadmap-item">
+          <div class="ga-badge ga-now">GA Now</div>
+          <div class="roadmap-item-title">Content Production Agent</div>
+          <div class="roadmap-item-body">Operates across AEM and Workfront to accelerate content creation — generating variations, adapting assets for different markets and channels, and routing work through approval workflows automatically. Trained on Adobe's content models and your brand guidelines.</div>
+        </div>
+        <div class="roadmap-item">
+          <div class="ga-badge ga-now">GA Now</div>
+          <div class="roadmap-item-title">Site Optimization Agent</div>
+          <div class="roadmap-item-body">The AI agent behind AEM Sites Optimizer — continuously monitoring, identifying, and deploying improvements to your live AEM Cloud Service site. Operates autonomously within approved guardrails, escalating to human review only when changes exceed defined thresholds.</div>
+        </div>
+        <div class="roadmap-item">
+          <div class="ga-badge ga-now">GA Now</div>
+          <div class="roadmap-item-title">LLM Optimization Agent</div>
+          <div class="roadmap-item-body">The AI agent behind LLM Optimizer — monitoring AI model outputs about your brand, identifying content gaps, and deploying structured markup updates to AEM to improve how AI assistants represent your products and services.</div>
+        </div>
+        <div class="roadmap-item">
+          <div class="ga-badge ga-soon">Coming 2026</div>
+          <div class="roadmap-item-title">Workflow Optimization Agent</div>
+          <div class="roadmap-item-body">Embedded in Workfront, this agent analyzes workflow patterns, identifies recurring bottlenecks, and recommends process improvements. Over time it learns the optimal routing and approval patterns for your organization and can proactively reconfigure workflows with human approval.</div>
+        </div>
+        <div class="roadmap-item">
+          <div class="ga-badge ga-preview">Preview</div>
+          <div class="roadmap-item-title">Customer Experience Models</div>
+          <div class="roadmap-item-body">Foundation AI models trained specifically on Adobe's customer experience data — optimized for content creation, personalization, and experience optimization tasks. These models underpin the agent capabilities and will be accessible to enterprise customers for custom fine-tuning later in 2026.</div>
+        </div>
+      </div>
+
+      <div id="callout-agents-abbott" class="customer-callout">
+        <strong>Relevant to your initiative:</strong> S602 — Agent Orchestrator Unpacked — is the session for this initiative. It provides the full architectural picture: how purpose-built agents across AEM, Workfront, and Experience Cloud coordinate through a unified reasoning engine. This is the platform-level AI story that explains how all of Adobe's pieces connect at enterprise scale.
+      </div>
+      <div id="callout-agents-medtronic" class="customer-callout">
+        <strong>Relevant to your initiative:</strong> The Agent Orchestrator tech deep-dive (S602) maps directly to an AI-centric platform strategy. The key framing: AEM is just one part of a coordinated Adobe AI ecosystem — and the Orchestrator is the layer that makes all of it work together without building custom integrations.
+      </div>
+      <div id="callout-agents-resmed" class="customer-callout">
+        <strong>Relevant to your initiative:</strong> Agent Orchestrator at 1M credits/year gives your team access to the Content Production Agent and Site Optimization Agent out of the gate. For a large global market organization, these aren't nice-to-haves — they're the operational multiplier that makes content production at scale tractable.
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- VIDEOS + ON-DEMAND -->
+<section id="videos" class="section">
+  <div class="section-label">Videos &amp; On-Demand</div>
+  <h2 class="section-title">Watch <span class="text-red">It All.</span></h2>
+  <p class="section-desc">Key sessions from Summit are available on-demand via Adobe Experience League and Summit Online. These are the highest-value watches across all customer priorities.</p>
+
+  <div class="video-grid">
+    <div class="video-card">
+      <div class="video-thumb">
+        <div class="video-thumb-bg">🏗</div>
+        <a class="play-btn" href="https://reg.adobe.com/flow/adobe/as26/sessions/page/catalog?search=S321&tab.allsessions=1643149273691001NFtR" target="_blank">▶</a>
+      </div>
+      <div class="video-info">
+        <div class="video-tag">S321 · AEM Roadmap</div>
+        <div class="video-title">AEM Sites — Transformative Innovations for the Agentic Web</div>
+        <div class="video-desc">Cedric Huesler presents the complete AEM roadmap — EDS hybrid delivery, agentic capabilities, and the cloud-native direction for AEM CS. The single most important session for AEM platform strategy.</div>
+        <div class="tag-row" style="margin-bottom: 12px;">
+          <span class="tag tag-aem">AEM</span>
+          <span class="tag tag-eds">EDS</span>
+          <span class="tag tag-virtual">Virtual</span>
+        </div>
+        <a class="video-link" href="https://reg.adobe.com/flow/adobe/as26/sessions/page/catalog?search=S321&tab.allsessions=1643149273691001NFtR" target="_blank">Watch On-Demand →</a>
+      </div>
+    </div>
+
+    <div class="video-card">
+      <div class="video-thumb">
+        <div class="video-thumb-bg">📋</div>
+        <a class="play-btn" href="https://reg.adobe.com/flow/adobe/as26/sessions/page/catalog?search=S801&tab.allsessions=1643149273691001NFtR" target="_blank">▶</a>
+      </div>
+      <div class="video-info">
+        <div class="video-tag">S801 · Workfront Roadmap</div>
+        <div class="video-title">AI and the Future of Adobe Workfront</div>
+        <div class="video-desc">The flagship Workfront roadmap session — AI-driven workflow automation, intelligent approvals, and what's coming next. Presented by Julie Johnson, Jacob Russell, and Paul Vaughn.</div>
+        <div class="tag-row" style="margin-bottom: 12px;">
+          <span class="tag tag-wf">Workfront</span>
+          <span class="tag tag-virtual">Virtual</span>
+        </div>
+        <a class="video-link" href="https://reg.adobe.com/flow/adobe/as26/sessions/page/catalog?search=S801&tab.allsessions=1643149273691001NFtR" target="_blank">Watch On-Demand →</a>
+      </div>
+    </div>
+
+    <div class="video-card">
+      <div class="video-thumb">
+        <div class="video-thumb-bg">🔍</div>
+        <a class="play-btn" href="https://reg.adobe.com/flow/adobe/as26/sessions/page/catalog?search=S325&tab.allsessions=1643149273691001NFtR" target="_blank">▶</a>
+      </div>
+      <div class="video-info">
+        <div class="video-tag">S325 · Sites Optimizer</div>
+        <div class="video-title">Intelligent Optimization with AEM Sites Optimizer</div>
+        <div class="video-desc">How Sites Optimizer uses AI to continuously improve SEO, Core Web Vitals, accessibility, and conversion — automatically, without manual engineering cycles. Presented by Kathie Yang and Hyman Chung.</div>
+        <div class="tag-row" style="margin-bottom: 12px;">
+          <span class="tag tag-optimizer">Optimizer</span>
+          <span class="tag tag-aem">AEM CS Only</span>
+        </div>
+        <a class="video-link" href="https://reg.adobe.com/flow/adobe/as26/sessions/page/catalog?search=S325&tab.allsessions=1643149273691001NFtR" target="_blank">Watch On-Demand →</a>
+      </div>
+    </div>
+
+    <div class="video-card">
+      <div class="video-thumb">
+        <div class="video-thumb-bg">☁️</div>
+        <a class="play-btn" href="https://reg.adobe.com/flow/adobe/as26/sessions/page/catalog?search=S328&tab.allsessions=1643149273691001NFtR" target="_blank">▶</a>
+      </div>
+      <div class="video-info">
+        <div class="video-tag">S328 · Migration Customer Stories</div>
+        <div class="video-title">A Path to AI-Native Modernization</div>
+        <div class="video-desc">Real-world migration stories from AEM on-prem and AMS to AEM CS + EDS — architecture decisions, hybrid delivery choices, and honest accounts of what the transition actually looks like at scale.</div>
+        <div class="tag-row" style="margin-bottom: 12px;">
+          <span class="tag tag-aem">AEM</span>
+          <span class="tag tag-eds">EDS</span>
+          <span class="tag tag-virtual">Virtual</span>
+        </div>
+        <a class="video-link" href="https://reg.adobe.com/flow/adobe/as26/sessions/page/catalog?search=S328&tab.allsessions=1643149273691001NFtR" target="_blank">Watch On-Demand →</a>
+      </div>
+    </div>
+
+    <div class="video-card">
+      <div class="video-thumb">
+        <div class="video-thumb-bg">🤖</div>
+        <a class="play-btn" href="https://reg.adobe.com/flow/adobe/as26/sessions/page/catalog?search=S602&tab.allsessions=1643149273691001NFtR" target="_blank">▶</a>
+      </div>
+      <div class="video-info">
+        <div class="video-tag">S602 · Agent Orchestrator</div>
+        <div class="video-title">Agent Orchestrator Unpacked</div>
+        <div class="video-desc">Technical deep-dive into the AEP Agent Orchestrator — how AI agents across AJO, CJA, RTCDP, and AEM coordinate into a unified agentic system with a shared reasoning engine.</div>
+        <div class="tag-row" style="margin-bottom: 12px;">
+          <span class="tag tag-agents">Agents</span>
+          <span class="tag tag-virtual">Virtual</span>
+        </div>
+        <a class="video-link" href="https://reg.adobe.com/flow/adobe/as26/sessions/page/catalog?search=S602&tab.allsessions=1643149273691001NFtR" target="_blank">Watch On-Demand →</a>
+      </div>
+    </div>
+
+    <div class="video-card">
+      <div class="video-thumb">
+        <div class="video-thumb-bg">⚡</div>
+        <a class="play-btn" href="https://video.tv.adobe.com/v/3477678/?learn=on" target="_blank">▶</a>
+      </div>
+      <div class="video-info">
+        <div class="video-tag">Adobe Developers Live · Available Now</div>
+        <div class="video-title">LLM Optimizer — From 6% to Fully Visible</div>
+        <div class="video-desc">Live demonstration showing how a page went from 6% AI-visible to fully visible using LLM Optimizer. Critical for understanding the EDS + AI visibility architecture — watch before the strategy conversation.</div>
+        <div class="tag-row" style="margin-bottom: 12px;">
+          <span class="tag tag-optimizer">LLM Optimizer</span>
+          <span class="tag tag-virtual">Watch Now</span>
+        </div>
+        <a class="video-link" href="https://video.tv.adobe.com/v/3477678/?learn=on" target="_blank">Watch Now →</a>
+      </div>
+    </div>
+
+    <div class="video-card">
+      <div class="video-thumb">
+        <div class="video-thumb-bg">📋</div>
+        <a class="play-btn" href="https://reg.adobe.com/flow/adobe/as26/sessions/page/catalog?search=S803&tab.allsessions=1643149273691001NFtR" target="_blank">▶</a>
+      </div>
+      <div class="video-info">
+        <div class="video-tag">S803 · Workfront + AI</div>
+        <div class="video-title">The Evolution of Collaboration in the Era of AI</div>
+        <div class="video-desc">How Workfront evolves as a collaboration platform in the AI era — integrations, cross-system workflows, and working alongside AI agents. The strategic complement to S801.</div>
+        <div class="tag-row" style="margin-bottom: 12px;">
+          <span class="tag tag-wf">Workfront</span>
+          <span class="tag tag-agents">AI</span>
+        </div>
+        <a class="video-link" href="https://reg.adobe.com/flow/adobe/as26/sessions/page/catalog?search=S803&tab.allsessions=1643149273691001NFtR" target="_blank">Watch On-Demand →</a>
+      </div>
+    </div>
+
+    <div class="video-card">
+      <div class="video-thumb">
+        <div class="video-thumb-bg">🛠</div>
+        <a class="play-btn" href="https://reg.adobe.com/flow/adobe/as26/sessions/page/catalog?search=L613&tab.allsessions=1643149273691001NFtR" target="_blank">▶</a>
+      </div>
+      <div class="video-info">
+        <div class="video-tag">L613 · Hands-on Lab (On-Demand)</div>
+        <div class="video-title">Vibe Code an Author Experience for Edge Delivery</div>
+        <div class="video-desc">90-minute hands-on lab: AI-assisted coding tools to build and customize EDS author experiences. The fastest way to understand whether EDS fits your engineering team — more valuable than any presentation.</div>
+        <div class="tag-row" style="margin-bottom: 12px;">
+          <span class="tag tag-eds">EDS</span>
+          <span class="tag tag-aem">Developer</span>
+        </div>
+        <a class="video-link" href="https://reg.adobe.com/flow/adobe/as26/sessions/page/catalog?search=L613&tab.allsessions=1643149273691001NFtR" target="_blank">Watch On-Demand →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- SESSION QUICK REFERENCE -->
+<section id="sessions" style="background: var(--gray-1); padding: 80px 0;">
+  <div class="section" style="padding-top: 0; padding-bottom: 0;">
+    <div class="section-label">Session Reference</div>
+    <h2 class="section-title">All Sessions <span class="text-red">At a Glance.</span></h2>
+    <p class="section-desc">Every session referenced in this guide — with direct links to on-demand recordings.</p>
+
+    <div class="sessions-list">
+      <div class="session-row">
+        <span class="session-id-badge">S321</span>
+        <div class="session-info">
+          <div class="session-name">AEM Sites — Transformative Innovations for the Agentic Web</div>
+          <div class="session-meta">
+            <span>Cedric Huesler · April 21 · 1:30 PM PT</span>
+            <div class="tag-row" style="margin: 0;">
+              <span class="tag tag-aem">AEM Roadmap</span>
+              <span class="tag tag-eds">EDS</span>
+            </div>
+          </div>
+        </div>
+        <a class="session-link" href="https://reg.adobe.com/flow/adobe/as26/sessions/page/catalog?search=S321&tab.allsessions=1643149273691001NFtR" target="_blank">Watch →</a>
+      </div>
+
+      <div class="session-row">
+        <span class="session-id-badge">S328</span>
+        <div class="session-info">
+          <div class="session-name">A Path to AI-Native Modernization: Future of Experience in the Agentic Era</div>
+          <div class="session-meta">
+            <span>April 21 · 3:00 PM PT · Delfino 1</span>
+            <div class="tag-row" style="margin: 0;">
+              <span class="tag tag-aem">Migration</span>
+              <span class="tag tag-eds">EDS</span>
+            </div>
+          </div>
+        </div>
+        <a class="session-link" href="https://reg.adobe.com/flow/adobe/as26/sessions/page/catalog?search=S328&tab.allsessions=1643149273691001NFtR" target="_blank">Watch →</a>
+      </div>
+
+      <div class="session-row">
+        <span class="session-id-badge">S325</span>
+        <div class="session-info">
+          <div class="session-name">Intelligent Optimization with AEM Sites Optimizer</div>
+          <div class="session-meta">
+            <span>Kathie Yang, Hyman Chung · April 22 · 10:30 AM PT</span>
+            <div class="tag-row" style="margin: 0;">
+              <span class="tag tag-optimizer">Sites Optimizer</span>
+              <span class="tag tag-aem">AEM CS Only</span>
+            </div>
+          </div>
+        </div>
+        <a class="session-link" href="https://reg.adobe.com/flow/adobe/as26/sessions/page/catalog?search=S325&tab.allsessions=1643149273691001NFtR" target="_blank">Watch →</a>
+      </div>
+
+      <div class="session-row">
+        <span class="session-id-badge">S801</span>
+        <div class="session-info">
+          <div class="session-name">AI and the Future of Adobe Workfront</div>
+          <div class="session-meta">
+            <span>Julie Johnson, Jacob Russell, Paul Vaughn · April 20 · 11:30 AM PT · Lido 4</span>
+            <div class="tag-row" style="margin: 0;">
+              <span class="tag tag-wf">Workfront Roadmap</span>
+            </div>
+          </div>
+        </div>
+        <a class="session-link" href="https://reg.adobe.com/flow/adobe/as26/sessions/page/catalog?search=S801&tab.allsessions=1643149273691001NFtR" target="_blank">Watch →</a>
+      </div>
+
+      <div class="session-row">
+        <span class="session-id-badge">S803</span>
+        <div class="session-info">
+          <div class="session-name">The Evolution of Collaboration in the Era of AI</div>
+          <div class="session-meta">
+            <span>April 20 · 3:00 PM PT</span>
+            <div class="tag-row" style="margin: 0;">
+              <span class="tag tag-wf">Workfront</span>
+              <span class="tag tag-agents">AI</span>
+            </div>
+          </div>
+        </div>
+        <a class="session-link" href="https://reg.adobe.com/flow/adobe/as26/sessions/page/catalog?search=S803&tab.allsessions=1643149273691001NFtR" target="_blank">Watch →</a>
+      </div>
+
+      <div class="session-row">
+        <span class="session-id-badge">S909</span>
+        <div class="session-info">
+          <div class="session-name">Making Workfront and AEM Speak the Same Language</div>
+          <div class="session-meta">
+            <span>Skill Exchange · April 22 · 10:30 AM PT</span>
+            <div class="tag-row" style="margin: 0;">
+              <span class="tag tag-wf">Workfront + AEM</span>
+            </div>
+          </div>
+        </div>
+        <a class="session-link" href="https://reg.adobe.com/flow/adobe/as26/sessions/page/catalog?search=S909&tab.allsessions=1643149273691001NFtR" target="_blank">Watch →</a>
+      </div>
+
+      <div class="session-row">
+        <span class="session-id-badge">S602</span>
+        <div class="session-info">
+          <div class="session-name">Agent Orchestrator Unpacked</div>
+          <div class="session-meta">
+            <span>April 22 · 9:00 AM PT</span>
+            <div class="tag-row" style="margin: 0;">
+              <span class="tag tag-agents">Agent Orchestrator</span>
+            </div>
+          </div>
+        </div>
+        <a class="session-link" href="https://reg.adobe.com/flow/adobe/as26/sessions/page/catalog?search=S602&tab.allsessions=1643149273691001NFtR" target="_blank">Watch →</a>
+      </div>
+
+      <div class="session-row">
+        <span class="session-id-badge">L613</span>
+        <div class="session-info">
+          <div class="session-name">Vibe Code an Author Experience for Edge Delivery Services</div>
+          <div class="session-meta">
+            <span>Hands-on Lab · 90 min · On-Demand Post-Summit</span>
+            <div class="tag-row" style="margin: 0;">
+              <span class="tag tag-eds">EDS</span>
+              <span class="tag tag-aem">Developer</span>
+            </div>
+          </div>
+        </div>
+        <a class="session-link" href="https://reg.adobe.com/flow/adobe/as26/sessions/page/catalog?search=L613&tab.allsessions=1643149273691001NFtR" target="_blank">Watch →</a>
+      </div>
+
+      <div class="session-row">
+        <span class="session-id-badge">ADL</span>
+        <div class="session-info">
+          <div class="session-name">LLM Optimizer Deep Dive — Adobe Developers Live 2025</div>
+          <div class="session-meta">
+            <span>Adobe Experience League · Available Now</span>
+            <div class="tag-row" style="margin: 0;">
+              <span class="tag tag-optimizer">LLM Optimizer</span>
+              <span class="tag tag-virtual">Watch Now</span>
+            </div>
+          </div>
+        </div>
+        <a class="session-link" href="https://video.tv.adobe.com/v/3477678/?learn=on" target="_blank">Watch →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- NEXT STEPS -->
+<section id="next" class="section">
+  <div class="section-label">What Comes Next</div>
+  <h2 class="section-title">Let's <span class="text-red">Talk.</span></h2>
+  <p class="section-desc">Summit confirmed the direction. Now is the right time to map what you heard to your specific roadmap — and pressure-test the architecture decisions in front of you.</p>
+
+  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; margin-bottom: 40px;">
+    <div class="roadmap-item">
+      <div style="font-size: 28px; margin-bottom: 12px;">📅</div>
+      <div class="roadmap-item-title">Schedule a Post-Summit Debrief</div>
+      <div class="roadmap-item-body">Walk through what we heard at Summit together and map the announcements to your specific roadmap decisions. 45 minutes, your team, your questions.</div>
+    </div>
+    <div class="roadmap-item">
+      <div style="font-size: 28px; margin-bottom: 12px;">🎯</div>
+      <div class="roadmap-item-title">Prioritize Your Watch List</div>
+      <div class="roadmap-item-body">Start with the 1–2 sessions most relevant to your current decision. S321 for AEM/EDS strategy. S801 for Workfront roadmap. S325 for Sites Optimizer value. S602 for the AI architecture picture.</div>
+    </div>
+    <div class="roadmap-item">
+      <div style="font-size: 28px; margin-bottom: 12px;">🔬</div>
+      <div class="roadmap-item-title">Request a Product Demo</div>
+      <div class="roadmap-item-body">Sites Optimizer, LLM Optimizer, and the Agent Orchestrator all have live demos available. Seeing the product is worth more than any slide — ask your Adobe team to set one up against your actual content.</div>
+    </div>
+    <div class="roadmap-item">
+      <div style="font-size: 28px; margin-bottom: 12px;">📋</div>
+      <div class="roadmap-item-title">Align Internally on AI Strategy</div>
+      <div class="roadmap-item-body">Summit's message was clear: the AI capabilities are on AEM Cloud Service. If you're still on-prem or AMS, use this moment to build the internal case. We can help with business case frameworks and peer benchmarks.</div>
+    </div>
+  </div>
+
+  <div class="flex-row">
+    <a class="cta-btn" href="https://summit.adobe.com" target="_blank">View All Sessions on Adobe Summit →</a>
+    <a class="ghost-btn" href="https://experienceleague.adobe.com" target="_blank">Adobe Experience League</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">ADOBE <span>SUMMIT</span> 2026</div>
+  <p class="footer-sub">Las Vegas · April 20–22 · Virtual Replays Available Now</p>
+  <div class="footer-links">
+    <a href="https://summit.adobe.com" target="_blank">summit.adobe.com</a>
+    <a href="https://experienceleague.adobe.com" target="_blank">Experience League</a>
+    <a href="https://reg.adobe.com/flow/adobe/as26/sessions/page/catalog" target="_blank">Session Catalog</a>
+    <a href="https://video.tv.adobe.com/v/3477678/?learn=on" target="_blank">LLM Optimizer Demo</a>
+  </div>
+</footer>
+
+<script>
+const customerData = {
+  migration: {
+    welcome: "✅ Showing content relevant to: AEM Cloud Migration & EDS Modernization",
+    callouts: ['callout-aem-medtronic', 'callout-aem-gsk', 'callout-aem-astellas', 'callout-aem-resmed'],
+    spotlight: 'spotlight-migration'
+  },
+  optimizer: {
+    welcome: "✅ Showing content relevant to: AI Optimization — LLM Optimizer & Sites Optimizer",
+    callouts: ['callout-opt-gsk', 'callout-opt-minimed', 'callout-opt-resmed', 'callout-opt-medtronic'],
+    spotlight: 'spotlight-optimizer'
+  },
+  workfront: {
+    welcome: "✅ Showing content relevant to: Workfront AI, Planning & Workflow Automation",
+    callouts: ['callout-wf-arthrex', 'callout-wf-biogen'],
+    spotlight: 'spotlight-workfront'
+  },
+  assets: {
+    welcome: "✅ Showing content relevant to: Assets, Content Supply Chain & Agency Governance",
+    callouts: ['callout-wf-jj', 'callout-wf-medtronic', 'callout-wf-biogen'],
+    spotlight: 'spotlight-assets'
+  },
+  agents: {
+    welcome: "✅ Showing content relevant to: Agent Orchestrator & Enterprise AI Architecture",
+    callouts: ['callout-agents-abbott', 'callout-agents-medtronic', 'callout-agents-resmed'],
+    spotlight: 'spotlight-agents'
+  }
+};
+
+function setCustomer(val) {
+  // Clear all spotlights + callouts
+  document.querySelectorAll('.spotlight-card').forEach(el => el.classList.remove('visible'));
+  document.querySelectorAll('.customer-callout').forEach(el => el.classList.remove('visible'));
+  document.getElementById('welcomeBanner').classList.remove('visible');
+  document.getElementById('welcomeBanner').textContent = '';
+
+  if (!val || !customerData[val]) return;
+
+  const c = customerData[val];
+
+  // Show banner
+  const banner = document.getElementById('welcomeBanner');
+  banner.textContent = c.welcome;
+  banner.classList.add('visible');
+
+  // Show spotlight
+  const spotlight = document.getElementById(c.spotlight);
+  if (spotlight) spotlight.classList.add('visible');
+
+  // Show callouts
+  c.callouts.forEach(id => {
+    const el = document.getElementById(id);
+    if (el) el.classList.add('visible');
+  });
+
+  // Scroll to overview after brief delay
+  setTimeout(() => {
+    document.getElementById('overview').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }, 600);
+}
+</script>
+</body>
+</html>
